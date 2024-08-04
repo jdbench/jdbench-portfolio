@@ -32,6 +32,8 @@ jobs:
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
     needs: prepare
+    outputs:
+      digest: ${{ steps.push.outputs.digest}}
     permissions:
       packages: write
       contents: read
@@ -87,7 +89,7 @@ jobs:
       - name: Generate TOML
         run: bash fly.sh
       - name: fly deploy
-        run: flyctl deploy --remote-only -a "${{ vars.VAR_FLY_APP_NAME }}" -i "${{ vars.REGISTRY }}/${{ vars.IMAGE_NAME }}:${{ push.outputs.digest }}"
+        run: flyctl deploy --remote-only -a "${{ vars.VAR_FLY_APP_NAME }}" -i "${{ vars.REGISTRY }}/${{ vars.IMAGE_NAME }}:${{ push_to_registry.outputs.digest }}"
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
   fly_deploy-production:
