@@ -91,7 +91,7 @@ jobs:
       - name: Generate TOML
         run: bash fly.sh
       - name: fly deploy
-        run: flyctl deploy --remote-only -a "${{ vars.VAR_FLY_APP_NAME }}" -i "${{ vars.REGISTRY }}/${{ vars.IMAGE_NAME }}:${{ needs.push_to_registry.outputs.digest }}"
+        run: flyctl deploy --remote-only -a "${{ vars.VAR_FLY_APP_NAME }}" -i "${{ vars.REGISTRY }}/${{ vars.IMAGE_NAME }}"
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
   fly_deploy-production:
@@ -112,6 +112,6 @@ jobs:
       - name: Generate TOML
         run: bash fly.sh
       - name: fly deploy
-        run: flyctl deploy --remote-only -a "${{ vars.VAR_FLY_APP_NAME }}" -i "${{ vars.REGISTRY }}/${{ vars.IMAGE_NAME }}:${{ needs.fly_deploy-test.outputs.digest }}"
+        run: flyctl deploy --remote-only -a "${{ vars.VAR_FLY_APP_NAME }}" -i "${{ vars.REGISTRY }}/${{ vars.IMAGE_NAME }}"
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
