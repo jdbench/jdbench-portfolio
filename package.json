@@ -37,11 +37,10 @@
     "typescript": "^5"
   },
   "homepage": "https://github.com/jdbench/jdbench-portfolio#readme",
-  
-  "lint-staged": {
-    "**/*.js": [
-      "eslint --fix",
-      "jest --bail --findRelatedTests"
-    ]
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run format:check && npm run lint",
+      "pre-push": "npm run test"
+    }
   }
 }
