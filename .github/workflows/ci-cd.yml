@@ -7,7 +7,7 @@
 # To get a newer version, you will need to update the SHA.
 # You can also reference a tag or branch, but the action may change without warning.
 
-name: CI
+name: CI-CD
 
 on: [pull_request]
 
@@ -69,3 +69,43 @@ jobs:
           subject-name: ${{ vars.REGISTRY }}/${{ vars.IMAGE_NAME}}
           subject-digest: ${{ steps.push.outputs.digest }}
           push-to-registry: true
+  fly_deploy-test:
+    name: Fly Deploy Test
+    runs-on: ubuntu-latest
+    needs: push_to_registry
+    environment: Test
+    permissions:
+      packages: write
+      contents: read
+      attestations: write
+      id-token: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Intall Fly cli
+        uses: superfly/flyctl-actions/setup-flyctl@master
+      - name: fly deploy
+        run: flyctl deploy --remote-only
+        env:
+          VAR_FLY_APP_NAME: jdbench-portfolio-test
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+  fly_deploy-production:
+    name: Fly Deploy Production
+    runs-on: ubuntu-latest
+    needs: fly_deploy-test
+    environment: Production
+    permissions:
+      packages: write
+      contents: read
+      attestations: write
+      id-token: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Intall Fly cli
+        uses: superfly/flyctl-actions/setup-flyctl@master
+      - name: fly deploy
+        run: flyctl deploy --remote-only
+        env:
+          VAR_FLY_APP_NAME: jdbench-portfolio
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
