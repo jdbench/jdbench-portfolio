@@ -1,0 +1,117 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+# GitHub recommends pinning actions to a commit SHA.
+# To get a newer version, you will need to update the SHA.
+# You can also reference a tag or branch, but the action may change without warning.
+
+name: CI-CD
+
+on: [pull_request]
+
+jobs:
+  prepare:
+    name: Prepare Code and Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+      - name: NPM Clean Install
+        run: npm ci
+      - name: Lint
+        run: npm run lint
+      - name: Unit Tests
+        run: npm run test
+
+  push_to_registry:
+    name: Push Docker image to Docker Hub
+    runs-on: ubuntu-latest
+    needs: prepare
+    outputs:
+      digest: ${{ steps.push.outputs.digest}}
+    permissions:
+      packages: write
+      contents: read
+      attestations: write
+      id-token: write
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: jdbench/public
+
+      - name: Build and push Docker image
+        id: push
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+
+      - name: Generate artifact attestation
+        uses: actions/attest-build-provenance@v1
+        with:
+          subject-name: ${{ vars.REGISTRY }}/${{ vars.IMAGE_NAME }}
+          subject-digest: ${{ steps.push.outputs.digest }}
+          push-to-registry: true
+  fly_deploy-test:
+    name: Fly Deploy Test
+    runs-on: ubuntu-latest
+    needs: push_to_registry
+    environment: Test
+    outputs:
+      digest: needs.push_to_registry.outputs.digest
+    permissions:
+      packages: write
+      contents: read
+      attestations: write
+      id-token: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Intall Fly cli
+        uses: superfly/flyctl-actions/setup-flyctl@master
+      - name: Generate TOML
+        run: bash fly.sh
+      - name: fly deploy
+        run: flyctl deploy --remote-only -a "${{ vars.VAR_FLY_APP_NAME }}" -i "${{ vars.REGISTRY }}/${{ vars.IMAGE_NAME }}:pr-${{ github.event.pull_request.number }}"
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+  fly_deploy-production:
+    name: Fly Deploy Production
+    runs-on: ubuntu-latest
+    needs: fly_deploy-test
+    environment: Production
+    permissions:
+      packages: write
+      contents: read
+      attestations: write
+      id-token: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Intall Fly cli
+        uses: superfly/flyctl-actions/setup-flyctl@master
+      - name: Generate TOML
+        run: bash fly.sh
+      - name: fly deploy
+        run: flyctl deploy --remote-only -a "${{ vars.VAR_FLY_APP_NAME }}" -i "${{ vars.REGISTRY }}/${{ vars.IMAGE_NAME }}:pr-${{ github.event.pull_request.number }}"
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
