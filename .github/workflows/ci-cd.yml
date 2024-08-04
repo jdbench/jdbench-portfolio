@@ -85,7 +85,7 @@ jobs:
       - name: Intall Fly cli
         uses: superfly/flyctl-actions/setup-flyctl@master
       - name: Generate TOML
-        run: npm run fly:generate
+        run: bash fly.sh
       - name: fly deploy
         run: flyctl deploy --remote-only
         env:
@@ -108,7 +108,7 @@ jobs:
       - name: Intall Fly cli
         uses: superfly/flyctl-actions/setup-flyctl@master
       - name: Generate TOML
-        run: npm run fly:generate
+        run: bash fly.sh
       - name: fly deploy
         run: flyctl deploy --remote-only
         env:
