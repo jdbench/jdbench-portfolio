@@ -89,7 +89,7 @@ jobs:
         env:
           VAR_FLY_APP_NAME: jdbench-portfolio-test
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
-          VAR_FLY_IMAGE: ${{ vars.REGISTRY }}/${{ vars.IMAGE_NAME }}:${{ push_to_registry.steps.push.outputs.digest }}
+          VAR_FLY_IMAGE: ${{ vars.REGISTRY }}/${{ vars.IMAGE_NAME }}:${{ steps.push.outputs.digest }}
   fly_deploy-production:
     name: Fly Deploy Production
     runs-on: ubuntu-latest
@@ -110,4 +110,4 @@ jobs:
         env:
           VAR_FLY_APP_NAME: jdbench-portfolio
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
-          VAR_FLY_IMAGE: ${{ vars.REGISTRY }}/${{ vars.IMAGE_NAME }}:${{ push_to_registry.steps.push.outputs.digest }}
+          VAR_FLY_IMAGE: ${{ vars.REGISTRY }}/${{ vars.IMAGE_NAME }}:${{ steps.push.outputs.digest }}
