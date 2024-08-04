@@ -18,3 +18,6 @@ primary_region = 'sea'
   cpu_kind = 'shared'
   cpus = 1
 " > fly.toml
+
+echo $vars
+echo $env
