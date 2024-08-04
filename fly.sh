@@ -1,14 +1,15 @@
-
+#!/bin/bash
+echo "
 # fly.toml app configuration file generated for jdbench-portfolio on 2024-08-04T04:41:05-06:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'jdbench-portfolio'
+app = '$VAR_FLY_APP_NAME'
 primary_region = 'sea'
 
 [build]
-  image = ''
+  image = '$VAR_FLY_IMAGE'
 
 [http_service]
   internal_port = 3000
@@ -22,4 +23,4 @@ primary_region = 'sea'
   memory = '1gb'
   cpu_kind = 'shared'
   cpus = 1
- -
+" -> fly.toml

@@ -84,10 +84,14 @@ jobs:
         uses: actions/checkout@v4
       - name: Intall Fly cli
         uses: superfly/flyctl-actions/setup-flyctl@master
+      - name: Generate TOML
+        run: npm run fly:generate
       - name: fly deploy
-        run: flyctl deploy --remote-only --build-arg VAR_FLY_APP_NAME=jdbench-portfolio-test --build-arg VAR_FLY_IMAGE=${{ vars.REGISTRY }}/${{ vars.IMAGE_NAME }}:${{ steps.push.outputs.digest }}
+        run: flyctl deploy --remote-only
         env:
+          VAR_FLY_APP_NAME: jdbench-portfolio-test
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+          VAR_FLY_IMAGE: ${{ vars.REGISTRY }}/${{ vars.IMAGE_NAME }}:${{ steps.push.outputs.digest }}
   fly_deploy-production:
     name: Fly Deploy Production
     runs-on: ubuntu-latest
@@ -103,9 +107,11 @@ jobs:
         uses: actions/checkout@v4
       - name: Intall Fly cli
         uses: superfly/flyctl-actions/setup-flyctl@master
+      - name: Generate TOML
+        run: npm run fly:generate
       - name: fly deploy
         run: flyctl deploy --remote-only
         env:
-          VAR_FLY_APP_NAME: jdbench-portfolio
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+          VAR_FLY_APP_NAME: jdbench-portfolio
           VAR_FLY_IMAGE: ${{ vars.REGISTRY }}/${{ vars.IMAGE_NAME }}:${{ steps.push.outputs.digest }}
