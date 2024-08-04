@@ -17,4 +17,4 @@ primary_region = 'sea'
   memory = '1gb'
   cpu_kind = 'shared'
   cpus = 1
-" -> fly.toml
+" > fly.toml
