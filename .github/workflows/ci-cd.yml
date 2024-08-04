@@ -85,7 +85,7 @@ jobs:
       - name: Intall Fly cli
         uses: superfly/flyctl-actions/setup-flyctl@master
       - name: Generate TOML
-        run: export VAR_FLY_IMAGE=${{ vars.REGISTRY }}/${{ vars.IMAGE_NAME }}:${{ steps.push.outputs.digest }} export APP_NAME=${{ vars.VAR_FLY_APP_NAME }} bash fly.sh
+        run: bash fly.sh
       - name: fly deploy
         run: flyctl deploy --remote-only -a "${{ vars.VAR_FLY_APP_NAME }}" -i "${{ vars.REGISTRY }}/${{ vars.IMAGE_NAME }}:${{ steps.push.outputs.digest }}"
         env:
