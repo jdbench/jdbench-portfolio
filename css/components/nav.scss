@@ -9,6 +9,7 @@
       list-style: none;
       & a {
         color: var(--primary-link);
+        text-align: center;
         text-decoration: none;
         flex: 1;
         &:hover {
