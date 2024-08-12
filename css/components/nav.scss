@@ -1,0 +1,20 @@
+.top-nav {
+  &-ul {
+    display: flex;
+    max-width: var(--page-width);
+    justify-content: space-evenly;
+    &-li {
+      display: flex;
+      flex: 1;
+      list-style: none;
+      & a {
+        color: var(--primary-link);
+        text-decoration: none;
+        flex: 1;
+        &:hover {
+            color: var(--primary-link-hover);
+        }
+      }
+    }
+  }
+}
