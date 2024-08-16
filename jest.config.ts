@@ -45,6 +45,7 @@ const config: Config = {
     // "json",
     "text",
     "lcov",
+    "cobertura"
   //   "clover"
   ],
 
