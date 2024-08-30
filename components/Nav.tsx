@@ -2,7 +2,7 @@
 import { spacing24, spacing32 } from "../utils/constants";
 import Link from "next/link";
 import { useState } from "react";
-import { FaBars, FaSearch } from "react-icons/fa";
+import { FaBars } from "react-icons/fa";
 import { IoCloseSharp, IoSearch } from "react-icons/io5";
 
 export default function Nav() {
