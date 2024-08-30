@@ -1,20 +1,26 @@
 .top-nav {
   padding: $spacing16 0;
   width: 100%;
+
   &-ul {
     display: none;
     flex-direction: column;
+    justify-content: space-between;
     list-style: none;
+
     :visited {
       color: inherit;
     }
   }
+
   &-toggles {
     position: relative;
-    & > * {
+
+    &>* {
       cursor: pointer;
     }
   }
+
   &-close {
     color: white;
     margin: $spacing8;
@@ -23,6 +29,7 @@
     top: 0;
     z-index: 1;
   }
+
   &-show {
     background-color: black;
     color: white;
@@ -32,15 +39,30 @@
     position: absolute;
     top: 0;
     width: 80%;
+
     ul {
       display: flex;
     }
   }
+
   @media only screen and (min-width: $mobile-break-width) {
+
     &-bars,
     &-close {
       display: none;
     }
+
+    & a {
+      color: $primary-link;
+      flex: 1;
+      text-align: center;
+      text-decoration: none;
+
+      &:hover {
+        color: $primary-link-hover;
+      }
+    }
+
     &-show {
       background-color: inherit;
       color: inherit;
@@ -49,24 +71,21 @@
       position: static;
       width: 100%;
     }
+
     &-ul {
       display: flex;
       flex-direction: row;
-      justify-content: space-evenly;
+      justify-content: space-between;
       max-width: $page-width;
       padding: 0 $spacing16;
-      &-li {
+      &-list {
         display: flex;
-        flex: 1;
-        list-style: none;
-        & a {
-          color: $primary-link;
+        justify-content: space-between;
+        width: 250px;
+        &-li {
+          display: flex;
           flex: 1;
-          text-align: center;
-          text-decoration: none;
-          &:hover {
-            color: $primary-link-hover;
-          }
+          list-style: none;
         }
       }
     }

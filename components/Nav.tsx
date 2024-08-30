@@ -2,19 +2,16 @@
 import { spacing24, spacing32 } from "../utils/constants";
 import Link from "next/link";
 import { useState } from "react";
-import { FaBars } from "react-icons/fa";
-import { IoCloseSharp } from "react-icons/io5";
+import { FaBars, FaSearch } from "react-icons/fa";
+import { IoCloseSharp, IoSearch } from "react-icons/io5";
 
 export default function Nav() {
   const [showNav, setShowNav] = useState(false);
+  const [showSearch, setShowSearch] = useState(false);
   const toggleNav = () => {
     setShowNav(!showNav);
   };
   const nav = [
-    {
-      href: "/",
-      title: "Home",
-    },
     {
       href: "/projects",
       title: "Projects",
@@ -41,17 +38,23 @@ export default function Nav() {
           />
         </div>
         <ul className="top-nav-ul">
-          {nav.map(({ href, title }, i) => (
-            <li
-              className="top-nav-ul-li"
-              key={`top-nav-link-${i}`}>
-              <Link
-                onClick={toggleNav}
-                href={href}>
-                {title}
-              </Link>
-            </li>
-          ))}
+          <div>
+            <Link href="/">Home</Link>
+          </div>
+          <div className="top-nav-ul-list">
+            {nav.map(({ href, title }, i) => (
+              <li
+                className="top-nav-ul-list-li"
+                key={`top-nav-link-${i}`}>
+                <Link
+                  onClick={toggleNav}
+                  href={href}>
+                  {title}
+                </Link>
+              </li>
+            ))}
+            <IoSearch className="top-nav-ul-list-search" onClick={() => setShowSearch(!showSearch)} />
+          </div>
         </ul>
       </div>
     </nav>
