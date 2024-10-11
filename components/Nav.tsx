@@ -1,62 +1,32 @@
 "use client";
-import { spacing24, spacing32 } from "../utils/constants";
 import Link from "next/link";
-import { useState } from "react";
-import { FaBars } from "react-icons/fa";
-import { IoCloseSharp, IoSearch } from "react-icons/io5";
 
-export default function Nav() {
-  const [showNav, setShowNav] = useState(false);
-  const [showSearch, setShowSearch] = useState(false);
-  const toggleNav = () => {
-    setShowNav(!showNav);
-  };
-  const nav = [
-    {
-      href: "/projects",
-      title: "Projects",
-    },
-    {
-      href: "/about",
-      title: "About",
-    },
-  ];
-
-  return (
-    <nav className="top-nav">
-      <div className={`${showNav ? "top-nav-show" : ""}`}>
-        <div className="top-nav-toggles">
-          <FaBars
-            className={!showNav ? "top-nav-bars" : "hidden"}
-            size={spacing24}
-            onClick={toggleNav}
-          />
-          <IoCloseSharp
-            className={showNav ? "top-nav-close" : "hidden"}
-            size={spacing32}
-            onClick={toggleNav}
-          />
-        </div>
-        <ul className="top-nav-ul">
-          <div>
-            <Link href="/">Home</Link>
-          </div>
-          <div className="top-nav-ul-list">
-            {nav.map(({ href, title }, i) => (
-              <li
-                className="top-nav-ul-list-li"
-                key={`top-nav-link-${i}`}>
-                <Link
-                  onClick={toggleNav}
-                  href={href}>
-                  {title}
-                </Link>
-              </li>
-            ))}
-            <IoSearch className="top-nav-ul-list-search" onClick={() => setShowSearch(!showSearch)} />
-          </div>
-        </ul>
-      </div>
+export default function Nav({
+  items,
+  showNav,
+  toggleNav,
+}: {
+  items: { href: string; title: string }[];
+  showNav: boolean;
+  toggleNav: () => void;
+}) {
+  return items.length > 0 ? (
+    <nav className={`nav ${showNav ? "flex-show" : ""}`}>
+      <ul className="nav-ul">
+        {items
+          .filter(({ href, title }) => href && title)
+          .map(({ href, title }, i) => (
+            <li
+              className="nav-ul-li"
+              key={`nav-link-${i}`}>
+              <Link
+                onClick={toggleNav}
+                href={href}>
+                {title}
+              </Link>
+            </li>
+          ))}
+      </ul>
     </nav>
-  );
+  ) : null;
 }

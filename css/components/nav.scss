@@ -1,22 +1,21 @@
-.top-nav {
-  padding: $spacing16 0;
+.nav {
+  display: none;
+  justify-content: center;
   width: 100%;
 
   &-ul {
-    display: none;
-    flex-direction: column;
-    justify-content: space-between;
+    display: block;
+    padding: 0;
     list-style: none;
-
-    :visited {
-      color: inherit;
-    }
+    text-align: left;
+    width: min-content;
+    font-size: 1.6rem;
   }
 
   &-toggles {
     position: relative;
 
-    &>* {
+    & > * {
       cursor: pointer;
     }
   }
@@ -30,64 +29,16 @@
     z-index: 1;
   }
 
-  &-show {
-    background-color: black;
-    color: white;
-    display: block;
-    height: 100vh;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 80%;
-
-    ul {
-      display: flex;
-    }
-  }
-
   @media only screen and (min-width: $mobile-break-width) {
-
+    display: block;
     &-bars,
     &-close {
       display: none;
     }
 
-    & a {
-      color: $primary-link;
-      flex: 1;
-      text-align: center;
-      text-decoration: none;
-
-      &:hover {
-        color: $primary-link-hover;
-      }
-    }
-
-    &-show {
-      background-color: inherit;
-      color: inherit;
-      display: block;
-      height: auto;
-      position: static;
-      width: 100%;
-    }
-
     &-ul {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      max-width: $page-width;
-      padding: 0 $spacing16;
-      &-list {
-        display: flex;
-        justify-content: space-between;
-        width: 250px;
-        &-li {
-          display: flex;
-          flex: 1;
-          list-style: none;
-        }
-      }
+      font-size: 1.4rem;
+      margin: 0 auto;
     }
   }
 }

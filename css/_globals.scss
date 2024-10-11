@@ -10,3 +10,18 @@ $spacing8: 8px;
 $spacing16: 16px;
 $spacing32: 32px;
 $spacing64: 64px;
+
+
+
+.flex-show {
+    display: flex !important;
+    height: 100%;
+    visibility: visible !important;
+    width: 100% !important;
+
+    .icons {
+        svg {
+            fill: white;
+        }
+    }
+}

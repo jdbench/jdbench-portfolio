@@ -1,0 +1,10 @@
+.icons {
+  position: fixed;
+  right: $spacing16;
+  top: $spacing16;
+  z-index: 2;
+  cursor: pointer;
+  @media only screen and (min-width: $mobile-break-width) {
+    display: none;
+  }
+}
