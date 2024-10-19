@@ -1,4 +1,4 @@
-export default function Dashboad() {
+export default function Page() {
   return (
     <>
       <div id="dashboard" className="main-home">Dashboard</div>

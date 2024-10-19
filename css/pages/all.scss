@@ -1,13 +1,17 @@
 @import "./about.scss";
 @import "./home.scss";
 @import "./projects.scss";
+@import "./skills.scss";
 
 .body {
   display: flex;
+  position: relative;
   &-left {
+    transition: width ease 0.5s;
     background: black;
     color: white;
     flex-direction: column;
+    height: 100vh;
     justify-content: center;
     left: 0;
     position: fixed;
@@ -19,16 +23,29 @@
       max-width: 350px;
     }
   }
+  &-right {
+    width: 100%;
+    .main {
+      padding: $spacing16;
+      width: 100%;
+      & > div {
+        scroll-snap-align: center;
+      }
+    }
+  }
   @media only screen and (min-width: $mobile-break-width) {
     margin: 0 auto;
 
     &-left {
       display: block;
-      height: 100vh;
-      position: relative;
       text-align: center;
+      transition: none;
       visibility: visible;
-      width: 25% !important;
+      width: $left-column-width !important;
+    }
+
+    &-right {
+      margin-left: $left-column-width;
     }
   }
 }

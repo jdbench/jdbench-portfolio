@@ -1,6 +1,6 @@
 * {
+  box-sizing: border-box;
   user-select: none;
-  --webkit-user-select: none;
 }
 
 a {
@@ -21,6 +21,8 @@ a {
   display: none;
 }
 
-body {
+body,
+html {
   margin: 0;
+  scroll-snap-type: y mandatory;
 }
