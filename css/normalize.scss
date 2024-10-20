@@ -1,0 +1,28 @@
+* {
+  box-sizing: border-box;
+  user-select: none;
+}
+
+a {
+  text-decoration: none;
+  color: $primary-link;
+  flex: 1;
+  text-align: center;
+
+  &:visited {
+    color: inherit;
+  }
+  &:hover {
+    color: $primary-link-hover;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+body,
+html {
+  margin: 0;
+  scroll-snap-type: y mandatory;
+}
