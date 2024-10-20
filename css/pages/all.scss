@@ -15,12 +15,13 @@
     justify-content: center;
     left: 0;
     position: fixed;
-    visibility: collapse;
     width: 0;
     & > .header,
-    & > .nav {
+    & > .nav,
+    & > .footer {
       margin: 0 auto;
       max-width: 350px;
+      visibility: collapse;
     }
   }
   &-right {
@@ -42,6 +43,13 @@
       transition: none;
       visibility: visible;
       width: $left-column-width !important;
+      & > .header,
+      & > .nav,
+      & > .footer {
+        margin: 0 auto;
+        max-width: 350px;
+        visibility: visible;
+      }
     }
 
     &-right {

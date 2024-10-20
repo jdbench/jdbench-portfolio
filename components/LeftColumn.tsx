@@ -22,7 +22,7 @@ export default function LeftColumn({
       <div className="icons">
         {showNav ? (
           <IoMdClose
-            color= "white"
+            color="white"
             onClick={toggleNav}
             size={24}
           />
@@ -36,13 +36,13 @@ export default function LeftColumn({
       <div
         id="left-column"
         className={`body-left${showNav ? " flex-show" : ""}`}>
-        <Header />
+        <Header showNav={showNav} />
         <Nav
           items={navList}
           showNav={showNav}
           toggleNav={toggleNav}
         />
-        <Footer />
+        <Footer showNav={showNav} />
       </div>
     </>
   );

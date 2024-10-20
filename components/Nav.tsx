@@ -11,7 +11,7 @@ export default function Nav({
   toggleNav: () => void;
 }) {
   return items.length > 0 ? (
-    <nav className={`nav ${showNav ? "flex-show" : ""}`}>
+    <nav className={`nav${showNav ? " flex-show" : ""}`}>
       <ul className="nav-ul">
         {items
           .filter(({ href, title }) => href && title)
