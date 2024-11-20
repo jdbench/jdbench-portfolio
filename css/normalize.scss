@@ -10,7 +10,7 @@ a {
   text-align: center;
 
   &:visited {
-    color: inherit;
+    color: $primary-link;
   }
   &:hover {
     color: $primary-link-hover;
