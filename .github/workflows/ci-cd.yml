@@ -132,7 +132,11 @@ jobs:
         uses: superfly/flyctl-actions/setup-flyctl@master
       - name: Generate TOML
         run: bash fly.sh
-      - name: fly deploy
+      - name: fly deploy pull request
+        if: github.event.pull_request.number != ''
         run: flyctl deploy --remote-only -a "${{ vars.VAR_FLY_APP_NAME }}" -i "${{ vars.REGISTRY }}/${{ vars.IMAGE_NAME }}:pr-${{ github.event.pull_request.number }}"
+      - name: fly deploy main
+        if: github.ref_name == 'main'
+        run: flyctl deploy --remote-only -a "${{ vars.VAR_FLY_APP_NAME }}" -i "${{ vars.REGISTRY }}/${{ vars.IMAGE_NAME }}:main"
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
