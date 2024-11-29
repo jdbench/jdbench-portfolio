@@ -58,7 +58,8 @@
             "git add"
         ],
         "**/*.{js,jsx,ts,tsx,css,md,scss}": [
-            "prettier --write"
+            "prettier --write",
+            "git add"
         ]
     }
 }
