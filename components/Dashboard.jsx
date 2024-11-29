@@ -2,7 +2,7 @@
 
 export default function Dashboard() {
     return (
-        <>
+        <div className="main-home-wrapper">
             <section className="main-home-section">
                 <a href="#skills">skills</a>
             </section>
@@ -12,6 +12,6 @@ export default function Dashboard() {
             <section className="main-home-section">
                 <a href="#about">about</a>
             </section>
-        </>
+        </div>
     );
 }

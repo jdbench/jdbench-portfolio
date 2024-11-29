@@ -55,12 +55,10 @@
     "lint-staged": {
         "**/*.{js,jsx,tx,tsx}": [
             "eslint --fix",
-            "jest --bail --findRelatedTests",
-            "git add"
+            "jest --bail --findRelatedTests --passWithNoTests"
         ],
         "**/*.{js,jsx,ts,tsx,css,md,scss}": [
-            "prettier --write",
-            "git add"
+            "prettier --write"
         ]
     }
 }
