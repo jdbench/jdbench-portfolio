@@ -3,7 +3,7 @@ export default function Header({
     toggleNav,
 }: {
     showNav: boolean;
-    toggleNav: () => {};
+    toggleNav: () => void;
 }) {
     return (
         <header className={`header${showNav ? " show" : ""}`}>
