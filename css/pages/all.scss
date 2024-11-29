@@ -4,56 +4,59 @@
 @import "./skills.scss";
 
 .body {
-  display: flex;
-  position: relative;
-  &-left {
-    transition: width ease 250ms;
-    background: black;
-    color: white;
-    flex-direction: column;
-    height: 100vh;
-    justify-content: center;
-    left: 0;
-    position: fixed;
-    width: 0;
-    & > .header,
-    & > .nav,
-    & > .footer {
-      margin: 0 auto;
-      max-width: 350px;
-      visibility: collapse;
-    }
-  }
-  &-right {
-    width: 100%;
-    .main {
-      padding: $spacing16;
-      width: 100%;
-      & > div {
-        scroll-snap-align: center;
-      }
-    }
-  }
-  @media only screen and (min-width: $mobile-break-width) {
-    margin: 0 auto;
-
+    display: flex;
+    position: relative;
     &-left {
-      display: block;
-      text-align: center;
-      transition: none;
-      visibility: visible;
-      width: $left-column-width !important;
-      & > .header,
-      & > .nav,
-      & > .footer {
-        margin: 0 auto;
-        max-width: 350px;
-        visibility: visible;
-      }
+        transition: width ease 250ms;
+        background: black;
+        color: white;
+        flex-direction: column;
+        height: 100vh;
+        justify-content: center;
+        left: 0;
+        position: fixed;
+        width: 0;
+        & > .header,
+        & > .nav,
+        & > .footer {
+            margin: 0 auto;
+            max-width: 350px;
+            visibility: collapse;
+        }
+        h1 {
+            padding-top: $spacing16;
+        }
     }
-
     &-right {
-      margin-left: $left-column-width;
+        width: 100%;
+        .main {
+            padding: $spacing16;
+            width: 100%;
+            & > div {
+                scroll-snap-align: center;
+            }
+        }
     }
-  }
+    @media only screen and (min-width: $mobile-break-width) {
+        margin: 0 auto;
+
+        &-left {
+            display: block;
+            text-align: center;
+            transition: none;
+            visibility: visible;
+            width: $left-column-width !important;
+            & > .header,
+            & > .nav,
+            & > .footer {
+                margin: 0 auto;
+                max-width: 350px;
+                visibility: visible;
+            }
+        }
+
+        &-right {
+            margin-left: $left-column-width;
+        }
+    }
 }
