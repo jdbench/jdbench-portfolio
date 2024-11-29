@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function Header({
     showNav,
     toggleNav,
@@ -8,7 +10,7 @@ export default function Header({
     return (
         <header className={`header${showNav ? " show" : ""}`}>
             <h1 onClick={toggleNav}>
-                <a href="#dashboard">Justin Bench</a>
+                <a href="#dashboard">Dashboard</a>
             </h1>
         </header>
     );

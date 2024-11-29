@@ -1,28 +1,31 @@
 * {
-  box-sizing: border-box;
-  user-select: none;
+    box-sizing: border-box;
+    user-select: none;
 }
 
 a {
-  text-decoration: none;
-  color: $primary-link;
-  flex: 1;
-  text-align: center;
-
-  &:visited {
+    text-decoration: none;
     color: $primary-link;
-  }
-  &:hover {
-    color: $primary-link-hover;
-  }
+    flex: 1;
+    text-align: center;
+
+    &:visited {
+        color: $primary-link;
+    }
+    @media screen and (min-width: $mobile-break-width) {
+        &:hover {
+            color: $primary-link-hover;
+        }
+    }
 }
 
 .hidden {
-  display: none;
+    display: none;
 }
 
 body,
 html {
-  margin: 0;
-  scroll-snap-type: y mandatory;
+    margin: 0;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
 }

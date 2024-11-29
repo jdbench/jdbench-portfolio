@@ -1,45 +1,10 @@
 .nav {
-  display: none;
-  justify-content: center;
-  width: 100%;
-
-  &-ul {
-    display: block;
-    padding: 0;
-    list-style: none;
-    margin: 0 auto;
-    text-align: left;
-    width: min-content;
-    font-size: 1.6rem;
-  }
-
-  &-toggles {
-    position: relative;
-
-    & > * {
-      cursor: pointer;
-    }
-  }
-
-  &-close {
-    color: white;
-    margin: $spacing8;
-    position: absolute;
-    right: 0;
+    background-color: black;
+    display: flex;
+    position: sticky;
+    width: 100%;
     top: 0;
-    z-index: 1;
-  }
-
-  @media only screen and (min-width: $mobile-break-width) {
-    display: block;
-    &-bars,
-    &-close {
-      display: none;
+    ul {
+        list-style: none;
     }
-
-    &-ul {
-      font-size: 1.4rem;
-      margin: 0 auto;
-    }
-  }
 }

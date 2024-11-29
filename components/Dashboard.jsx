@@ -4,14 +4,9 @@ export default function Dashboard() {
     return (
         <div className="main-home-wrapper">
             <section className="main-home-section">
-                <a href="#skills">skills</a>
+                <p>I&apos;m Justin Bench and I&apos;m a Full Stack Developer</p>
             </section>
-            <section className="main-home-section">
-                <a href="#projects">projects</a>
-            </section>
-            <section className="main-home-section">
-                <a href="#about">about</a>
-            </section>
+            <button>Enter</button>
         </div>
     );
 }
