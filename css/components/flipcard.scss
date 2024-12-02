@@ -2,7 +2,7 @@
     background-color: transparent;
     display: flex;
     flex: 1 0 auto;
-    height: 150px;
+    height: 125px;
     perspective: 1000px;
     transform: rotateY(0deg);
     &-active &-inner {
@@ -12,7 +12,7 @@
         box-shadow: $box-shadow;
         display: flex;
         flex: 1 0 auto;
-        height: 100%;
+        height: auto;
         margin: 0 auto;
         max-width: 215px;
         position: relative;
