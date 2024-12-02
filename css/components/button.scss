@@ -1,6 +1,8 @@
 .button {
-    padding: 20px;
+    border: none;
     box-shadow: 1px 1px 5px 0px grey;
+    outline: none;
+    padding: $spacing16;
 }
 .primary {
     background-color: red;
@@ -15,4 +17,7 @@
             color: white;
         }
     }
+}
+.slim {
+    padding: $spacing8 $spacing16;
 }

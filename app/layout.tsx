@@ -48,6 +48,10 @@ export default function RootLayout({
                     href="https://fonts.googleapis.com/css2?family=Itim&display=swap"
                     rel="stylesheet"
                 />
+                <link
+                    href="https://fonts.googleapis.com/css2?family=Istok+Web:ital,wght@0,400;0,700;1,400;1,700&family=Itim&display=swap"
+                    rel="stylesheet"
+                />
             </Head>
             <body className={`${inter.className} body`}>
                 <Nav items={navList} />

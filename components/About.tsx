@@ -3,16 +3,33 @@ import FlipCard from "./FlipCard";
 
 export default function About() {
     return (
-        <section>
-            <FlipCard />
-            <FlipCard />
-            <FlipCard />
+        <div className="about-wrapper">
             <Image
                 width="211"
                 height="213"
                 src="/me.png"
                 alt="Profile image of Justin Bench"
             />
-        </section>
+            <div className="flipcardcontainer">
+                <FlipCard
+                    back={{ title: "back title" }}
+                    title="Title"
+                    description="Description"
+                    img={{}}
+                />
+                <FlipCard
+                    back={{ title: "back title" }}
+                    title="Title"
+                    description="Description"
+                    img={{}}
+                />
+                <FlipCard
+                    back={{ title: "back title" }}
+                    title="Title"
+                    description="Description"
+                    img={{}}
+                />
+            </div>
+        </div>
     );
 }

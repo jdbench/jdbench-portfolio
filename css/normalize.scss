@@ -1,7 +1,10 @@
 * {
     box-sizing: border-box;
+    overscroll-behavior: none;
+    touch-action: none;
+    transition: background-color 300ms ease-out;
+    transition: color 150ms ease;
     user-select: none;
-    transition: background-color 200ms ease-out;
 }
 
 .hidden {
@@ -15,14 +18,36 @@ html {
     scroll-behavior: smooth;
 }
 
-a {
+h2 {
+    font-family: "Itim", cursive;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 400;
+    text-shadow: 1px 1px 1px grey;
+}
+
+h3 {
+    font-family: "Itim", cursive;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    text-shadow: 1px 1px 1px grey;
+}
+
+a,
+button,
+p {
+    font-family: "Istok Web", sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
     text-decoration: none;
 }
 
-h2 {
-    font-size: 48px;
-    font-family: "Itim", cursive;
-    font-weight: 400;
-    font-style: normal;
-    text-shadow: 1px 1px 1px grey;
+button {
+    align-items: center;
+    display: flex;
+    &:hover {
+        cursor: pointer;
+    }
 }
