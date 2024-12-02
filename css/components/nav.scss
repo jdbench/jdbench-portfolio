@@ -1,10 +1,33 @@
 .nav {
-    background-color: black;
+    align-items: center;
+    background-color: lightgray;
+    color: black;
     display: flex;
+    justify-content: space-between;
     position: sticky;
     width: 100%;
     top: 0;
-    ul {
+    &-section {
+        flex: 1;
+    }
+    &-ul {
+        display: flex;
         list-style: none;
+        li {
+            display: flex;
+            flex: 1 0 auto;
+            a {
+                color: inherit;
+                flex: 1;
+                @media screen and (min-width: $tablet-break-width) {
+                    &:hover {
+                        color: darkslategray;
+                    }
+                    &:active {
+                        color: inherit;
+                    }
+                }
+            }
+        }
     }
 }

@@ -1,7 +1,9 @@
 .footer {
+    bottom: $spacing32;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    position: absolute;
     width: 100%;
     &-credit {
         text-align: center;
