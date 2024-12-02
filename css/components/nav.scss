@@ -1,45 +1,64 @@
 .nav {
-  display: none;
-  justify-content: center;
-  width: 100%;
-
-  &-ul {
-    display: block;
-    padding: 0;
-    list-style: none;
-    margin: 0 auto;
-    text-align: left;
-    width: min-content;
-    font-size: 1.6rem;
-  }
-
-  &-toggles {
-    position: relative;
-
-    & > * {
-      cursor: pointer;
-    }
-  }
-
-  &-close {
-    color: white;
-    margin: $spacing8;
-    position: absolute;
-    right: 0;
+    align-items: center;
+    background-color: $background-color;
+    color: $text-on-background;
+    display: flex;
+    justify-content: space-between;
+    position: sticky;
+    width: 100%;
     top: 0;
-    z-index: 1;
-  }
-
-  @media only screen and (min-width: $mobile-break-width) {
-    display: block;
-    &-bars,
-    &-close {
-      display: none;
+    z-index: 2;
+    img {
+        height: 100%;
+        width: 100%;
     }
-
+    &-section {
+        display: grid;
+        &:last-child {
+            flex: 1;
+        }
+    }
+    &-burger {
+        &-tray {
+            display: flex;
+            flex: 0 1 auto;
+            flex-direction: column;
+            gap: 4px;
+            position: absolute;
+            right: $spacing16;
+            top: $spacing16;
+            visibility: collapse;
+            width: 0;
+            &:hover {
+                cursor: pointer;
+            }
+            & > span {
+                background-color: black;
+                height: 3px;
+                width: 25px;
+            }
+        }
+    }
     &-ul {
-      font-size: 1.4rem;
-      margin: 0 auto;
+        display: flex;
+        list-style: none;
+        max-width: 400px;
+        justify-self: end;
+        width: 100%;
+        li {
+            display: flex;
+            flex: 1 0 auto;
+            a {
+                color: inherit;
+                @media screen and (min-width: $tablet-break-width) {
+                    &:hover {
+                        color: darkslategray;
+                    }
+                    &:active {
+                        color: inherit;
+                    }
+                }
+            }
+        }
     }
-  }
 }

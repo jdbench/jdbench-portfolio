@@ -1,0 +1,23 @@
+.button {
+    border: none;
+    box-shadow: 1px 1px 5px 0px grey;
+    outline: none;
+    padding: $spacing16;
+}
+.primary {
+    background-color: red;
+    color: white;
+    @media only screen and (min-width: $tablet-break-width) {
+        &:hover {
+            background-color: lightgray;
+            color: black;
+        }
+        &:active {
+            background-color: lightslategray;
+            color: white;
+        }
+    }
+}
+.slim {
+    padding: $spacing8 $spacing16;
+}

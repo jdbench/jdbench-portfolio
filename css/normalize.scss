@@ -1,28 +1,53 @@
 * {
-  box-sizing: border-box;
-  user-select: none;
-}
-
-a {
-  text-decoration: none;
-  color: $primary-link;
-  flex: 1;
-  text-align: center;
-
-  &:visited {
-    color: $primary-link;
-  }
-  &:hover {
-    color: $primary-link-hover;
-  }
+    box-sizing: border-box;
+    overscroll-behavior: none;
+    touch-action: none;
+    transition: background-color 300ms ease-out;
+    transition: color 150ms ease;
+    user-select: none;
 }
 
 .hidden {
-  display: none;
+    display: none;
 }
 
 body,
 html {
-  margin: 0;
-  scroll-snap-type: y mandatory;
+    margin: 0;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+}
+
+h2 {
+    font-family: "Itim", cursive;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 400;
+    text-shadow: 1px 1px 1px grey;
+}
+
+h3 {
+    font-family: "Itim", cursive;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    text-shadow: 1px 1px 1px grey;
+}
+
+a,
+button,
+p {
+    font-family: "Istok Web", sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    text-decoration: none;
+}
+
+button {
+    align-items: center;
+    display: flex;
+    &:hover {
+        cursor: pointer;
+    }
 }

@@ -1,14 +1,12 @@
 .footer {
-  bottom: $spacing16;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  left: 0;
-  right: 0;
-  position: absolute;
-  width: 100%;
-  &-credit {
-    text-align: center;
+    bottom: $spacing16;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
     width: 100%;
-  }
+    &-credit {
+        text-align: center;
+        width: 100%;
+    }
 }

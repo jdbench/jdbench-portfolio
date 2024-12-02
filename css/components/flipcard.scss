@@ -1,0 +1,53 @@
+.flipcard {
+    background-color: transparent;
+    display: flex;
+    flex: 1 0 auto;
+    height: 125px;
+    perspective: 1000px;
+    transform: rotateY(0deg);
+    &-active &-inner {
+        transform: rotateY(180deg);
+    }
+    &-inner {
+        box-shadow: $box-shadow;
+        display: flex;
+        flex: 1 0 auto;
+        height: auto;
+        margin: 0 auto;
+        max-width: 215px;
+        position: relative;
+        text-align: center;
+        transition: transform 0.8s;
+        transform-style: preserve-3d;
+        width: 100%;
+    }
+    &-front {
+        text-align: center;
+    }
+    &-back {
+        transform: rotateY(180deg);
+    }
+    &-front,
+    &-back {
+        backface-visibility: hidden;
+        background-color: white;
+        display: grid;
+        flex: 1 0 auto;
+        grid-template-rows: repeat(3, 1fr);
+        height: 100%;
+        padding: $spacing8;
+        position: absolute;
+        width: 100%;
+        -webkit-backface-visibility: hidden;
+        h3 {
+            margin: 0;
+        }
+        button {
+            align-self: end;
+            grid-row: 3/3;
+            justify-self: end;
+            margin: 0 auto;
+            max-height: 30px;
+        }
+    }
+}

@@ -1,0 +1,28 @@
+#about {
+    align-items: center;
+    background-color: $background-color;
+    color: $text-on-background;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+    padding-top: 70px;
+    .about {
+        &-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: $spacing32;
+            justify-content: center;
+            margin: 0 auto;
+            max-width: $tablet-break-width;
+            padding: $spacing16;
+            width: 100%;
+            & > img {
+                background-color: red;
+                border-radius: 50%;
+                margin: 0 auto;
+                mix-blend-mode: luminosity;
+            }
+        }
+    }
+}
