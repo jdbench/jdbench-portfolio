@@ -13,8 +13,8 @@ export default function Nav({
                 <a href="#dashboard">
                     <Image
                         src="/logo.png"
-                        height="50"
-                        width="50"
+                        height="40"
+                        width="40"
                         alt="Justin Bench's initials as a logo"
                     />
                 </a>
